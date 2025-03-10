@@ -7,7 +7,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-      origin: "https://chatapp-one-rust.vercel.app/", // Allow frontend to connect
+      origin: "https://chatapp-one-rust.vercel.app", // Allow frontend to connect
       methods: ["GET", "POST"],
       credentials: true,
     },
