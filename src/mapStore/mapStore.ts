@@ -196,7 +196,12 @@ class Queue<T extends { userId: string; hashedArray: string }> {
         this.enqueue({ userId, hashedArray } as T); // Use type assertion
         if(socket1)
         this.io.to(socket1).emit('match-status', { status: 'waiting' }); // Notify the user
-      } else {
+      }
+      else if(dequeueRes.userId===userId){
+        if(socket1)
+        this.io.to(socket1).emit('match-status', { status: 'cancelled' }); // Notify the user
+      }
+       else {
         // Match found
         console.log('Match');
         let user1 = userId;
